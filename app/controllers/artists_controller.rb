@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
 	
-	before_filter :ensure_admin, only: [:index, :destroy]
+	before_filter :ensure_admin, only: [:edit, :new, :destroy]
 	#before filter takes one argument, which is the name of a method
 
 	def index

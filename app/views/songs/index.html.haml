@@ -1,11 +1,17 @@
-= link_to "New Song", new_song_path
+Songs!
 %br
 %br
+
+- if current_user.admin
+	= link_to "New Song", new_song_path
+	%br
+	%br
 
 - @songs.each do |song|
 	= link_to("#{song['name']}", song_path(song))
 	%br
-	= link_to('Edit', edit_song_path(song))
-	= link_to('Delete', song_path(song), method: :delete, confirm: 'Are you sure you want to do this?')
+	- if current_user.admin
+		= link_to('Edit', edit_song_path(song))
+		= link_to('Delete', song_path(song), method: :delete, confirm: 'Are you sure you want to do this?')
 	%br
 	%br

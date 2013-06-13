@@ -1,3 +1,13 @@
 #{@artist.name} - Pretty sweet artist, if you ask me.
-
+%br
+%br
+Songs:
+- @artist.songs.each do |song|
+	= link_to "#{song.name}", song_path(song)
+%br
+%br
+Albums:
+- @artist.albums.each do |album|
+	= link_to "#{album.name}", album_path(album)
+%br
 %img{:src => "#{@artist['img_url']}"}

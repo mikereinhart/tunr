@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 	def create
 		user = User.new(params[:user])
 		user.save!
-		render nothing: true
+		redirect_to root_path
 	end
 
 	def edit

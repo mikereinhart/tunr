@@ -1,11 +1,16 @@
-= link_to "New Album", new_album_path
+Albums!! DOESN'T ANYONE LISTEN TO WHOLE ALBUMS ANYMORE?!
+%br
+%br
+- if current_user.admin
+	= link_to "New Album", new_album_path
 %br
 %br
 
 - @albums.each do |album|
 	= link_to("#{album['name']}", album_path(album))
 	%br
-	= link_to('Edit', edit_album_path(album))
-	= link_to('Delete', album_path(album), method: :delete, confirm: 'Are you sure you want to do this?')
+	- if current_user.admin
+		= link_to('Edit', edit_album_path(album))
+		= link_to('Delete', album_path(album), method: :delete, confirm: 'Are you sure you want to do this?')
 	%br
 	%br

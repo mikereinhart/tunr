@@ -1,11 +1,17 @@
-= link_to "New Artist", new_artist_path
+Artists!
 %br
 %br
+
+- if current_user.admin
+	= link_to "New Artist", new_artist_path
+	%br
+	%br
 
 - @artists.each do |artist|
 	= link_to("#{artist['name']}", artist_path(artist))
 	%br
-	= link_to('Edit', edit_artist_path(artist))
-	= link_to('Delete', artist_path(artist), method: :delete, confirm: 'Are you sure you want to do this?')
+	- if current_user.admin
+		= link_to('Edit', edit_artist_path(artist))
+		= link_to('Delete', artist_path(artist), method: :delete, confirm: 'Are you sure you want to do this?')
 	%br
 	%br

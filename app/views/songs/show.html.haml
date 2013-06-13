@@ -1,5 +1,7 @@
 Title: #{@song.name}
 %br
-Written by: #{@song['artist.name']}
+Written by
+= link_to "#{@song.artist.name}", artist_path
 %br
-Album: #{@song['album.name']}
+Found on the album
+= link_to "#{@song.album.name}", album_path

@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 				p "entering authenicated user"
 				session[:user_id] = authenticated_user.id
 				message = "You are authenticated!"
-				render text: message, layout: true
+				redirect_to root_path
 			else
 				#message = 'You are not a valid user!'
 				#reander text: message

@@ -1,3 +1,6 @@
 #{@album.name} - Check it out!
+%br
+- @album.artists.each do |artist|
+	= p "Written by: #{artist.name}"
 
 %img{:src => "#{@album['img_url']}"}

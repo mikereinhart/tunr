@@ -1,11 +1,16 @@
-= link_to "New Genre", new_genre_path
+Genres!
+%br
+%br
+- if current_user.admin
+	= link_to "New Genre", new_genre_path
 %br
 %br
 
 - @genres.each do |genre|
 	= link_to("#{genre['name']}", genre_path(genre))
 	%br
-	= link_to('Edit', edit_genre_path(genre))
-	= link_to('Delete', genre_path(genre), method: :delete, confirm: 'Are you sure you want to do this?')
+	- if current_user.admin
+		= link_to('Edit', edit_genre_path(genre))
+		= link_to('Delete', genre_path(genre), method: :delete, confirm: 'Are you sure you want to do this?')
 	%br
 	%br
