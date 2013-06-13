@@ -1,0 +1,64 @@
+!!!
+%html
+  %head
+    %title Tunr
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .row
+      .large-3.columns
+        %h1
+          %img{:src => "http://images6.fanpop.com/image/photos/34000000/Music-music-34038745-1200-798.jpg"}/
+      .large-9.columns
+        %ul.right.button-group
+          %li
+            %a.button{:href => "/"} Home
+          %li
+            %a.button{:href => "/albums"} Albums
+          %li
+            %a.button{:href => "/artists"} Artists
+          - if !current_user
+            %li
+              %a.button{:href => "/users/new"} Create New User
+            %li
+              %a.button{:href => "/sessions/new"} Login
+          - if current_user && current_user.admin
+            %li
+              %a.button{:href => "/users"} Users
+          - if current_user
+            %li
+              = link_to "#{current_user[:name].capitalize}", user_path(current_user), class: 'button'
+            %li
+              = link_to 'Edit Profile', edit_user_path(current_user), class: 'button' 
+            %li
+              = link_to 'Logout', logout_path, method: :delete, class: 'button'
+    / End Header and Nav
+    .row
+      = yield
+      :javascript
+        $(document).foundation();
+    %footer.row
+      .large-12.columns
+        %hr/
+        .row
+          .large-6.columns
+            %p &copy; Copyright no one at all. Go to town.
+          .large-6.columns
+            %ul.inline-list.right
+              %li
+                %a{:href => "/"} Home
+              - if !current_user
+                %li
+                  %a{:href => "/users/new"} Create New User
+                %li
+                  %a{:href => "/sessions/new"} Login
+              - if current_user && current_user.admin
+                %li
+                  %a{:href => "/users"} Users
+              - if current_user
+                %li
+                  = link_to 'Logout', logout_path, method: :delete
+
+
+ 
