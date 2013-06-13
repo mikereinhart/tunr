@@ -14,17 +14,17 @@ class AlbumsController < ApplicationController
 	def create
 		album = Album.new(params[:album])
 		album.save!
-		render nothing: true
+		redirect_to albums_path
 	end
 
 	def edit
-		@album = Album.find(params[:album])
+		@album = Album.find(params[:id])
 	end
 
 	def update
 		album = Album.find(params[:id])
 		album.update_attributes(params['album'])
-		redirect_to album_path
+		redirect_to albums_path
 	end
 
 	def show

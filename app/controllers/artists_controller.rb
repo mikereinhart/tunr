@@ -14,17 +14,17 @@ class ArtistsController < ApplicationController
 	def create
 		artist = Artist.new(params[:artist])
 		artist.save!
-		render nothing: true
+		redirect_to artists_path
 	end
 
 	def edit
-		@artist = Artist.find(params[:artist])
+		@artist = Artist.find(params[:id])
 	end
 
 	def update
 		artist = Artist.find(params[:id])
 		artist.update_attributes(params['artist'])
-		redirect_to artist_path
+		redirect_to artists_path
 	end
 
 	def show
